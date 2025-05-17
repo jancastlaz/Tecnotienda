@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de Administración | TecnoTienda</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fffbe7;
+      margin: 0;
+      padding: 0;
+    }
+    #admin-panel {
+      max-width: 500px;
+      margin: 40px auto 20px auto;
+      background: #fff;
+      border: 1px solid #ffe082;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px #ffe08255;
+    }
+    h2 {
+      text-align: center;
+      color: #b8860b;
+    }
+    #admin-productos h3 {
+      color: #b8860b;
+    }
+    #admin-lista {
+      list-style: none;
+      padding: 0;
+    }
+    #admin-lista li {
+      margin-bottom: 10px;
+      background: #fffbe7;
+      border-radius: 5px;
+      padding: 8px;
+      border: 1px solid #ffe082;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #admin-lista input[type="number"] {
+      width: 70px;
+      margin: 0 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      padding: 2px 4px;
+      font-size: 1em;
+    }
+    #admin-lista button {
+      margin-left: 6px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95em;
+      background: #25D366;
+      color: #fff;
+    }
+    .cerrar-btn {
+      background: #b8860b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <section id="admin-panel">
+    <h2>Modificar precios y stock</h2>
+    <div id="admin-productos" style="margin-bottom:20px;">
+      <h3>Productos actuales</h3>
+      <ul id="admin-lista"></ul>
+    </div>
+    <button id="guardar-todo" class="cerrar-btn" style="background:#25D366;margin-bottom:10px;">Guardar todos los cambios</button>
+    <button onclick="window.location.href='index.html'" class="cerrar-btn">Cerrar panel</button>
+  </section>
+
+  <script>
+    // Lista fija de productos (puedes editar los nombres según tus productos reales)
+    let productosAdmin = [
+      {nombre: "JBL Go 4", precio: 129.90, stock: 10},
+      {nombre: "JBL Clip 5", precio: 179.90, stock: 8},
+      {nombre: "JBL Flip 6", precio: 349.90, stock: 5},
+      {nombre: "JBL Charge 5", precio: 499.90, stock: 3},
+      {nombre: "JBL Xtreme 4", precio: 899.90, stock: 2},
+      {nombre: "Audífonos Inalámbricos Sony", precio: 199.90, stock: 7}
+    ];
+
+    function actualizarListaAdmin() {
+      const lista = document.getElementById('admin-lista');
+      lista.innerHTML = '';
+      productosAdmin.forEach((prod, idx) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>
+            <b>${prod.nombre}</b>
+          </span>
+          <span>
+            Precio: S/ <input type="number" min="0" step="0.01" value="${prod.precio}" id="precio-${idx}">
+            Stock: <input type="number" min="0" value="${prod.stock}" id="stock-${idx}">
+          </span>
+        `;
+        lista.appendChild(li);
+      });
+    }
+
+    // Botón general para guardar todos los cambios
+    document.getElementById('guardar-todo').onclick = function() {
+      let cambios = [];
+      for(let idx = 0; idx < productosAdmin.length; idx++) {
+        const precioInput = document.getElementById('precio-' + idx);
+        const stockInput = document.getElementById('stock-' + idx);
+        const nuevoPrecio = parseFloat(precioInput.value);
+        const nuevoStock = parseInt(stockInput.value, 10);
+
+        if(isNaN(nuevoPrecio) || nuevoPrecio < 0) {
+          alert('Precio inválido para ' + productosAdmin[idx].nombre);
+          return;
+        }
+        if(isNaN(nuevoStock) || nuevoStock < 0) {
+          alert('Stock inválido para ' + productosAdmin[idx].nombre);
+          return;
+        }
+        productosAdmin[idx].precio = nuevoPrecio;
+        productosAdmin[idx].stock = nuevoStock;
+        cambios.push(productosAdmin[idx].nombre);
+      }
+      alert('¡Cambios guardados para: \n' + cambios.join('\n') + '!');
+      actualizarListaAdmin();
+    };
+
+    actualizarListaAdmin();
+  </script>
+</body>
+</html>

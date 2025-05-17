@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compra | TecnoTienda</title>
+  <meta name="description" content="Compra fácil y rápido en TecnoTienda. Elige tu producto y coordina tu compra por WhatsApp.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #1e1e2f; color: #fff; padding: 20px; text-align: center; }
+    nav { background: #333; padding: 10px; text-align: center; }
+    nav a { color: #fff; margin: 0 15px; text-decoration: none; transition: color 0.2s;}
+    nav a:hover { color: #FF6600; }
+    section { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    h2 { text-align: center; }
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-button:hover { background: #128C7E; transform: scale(1.05);}
+    .form-contacto label { display:block; margin-top:10px; }
+    .form-contacto input, .form-contacto textarea {
+      width:100%; padding:8px; border-radius:5px; border:1px solid #ccc; margin-top:5px;
+    }
+    .form-contacto button {
+      margin-top:12px; background:#25D366; color:white; border:none; border-radius:5px; padding:10px 20px; font-weight:bold; cursor:pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .form-contacto button:hover { background: #128C7E; transform: scale(1.05);}
+    footer { background: #1e1e2f; color: #fff; text-align: center; padding: 10px; }
+    @media (max-width: 700px) {
+      section { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TecnoTienda</h1>
+    <p>¡Compra fácil y rápido!</p>
+  </header>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="compra.html">Compra</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <section>
+    <h2 style="text-align: center; color:#FF6600;">¿Cómo comprar en TecnoTienda?</h2>
+    <p style="text-align: center; font-size:1.1em;">
+      Elige tu producto favorito, haz clic en <b>Comprar</b> y coordina tu pedido por WhatsApp.<br>
+      <span style="color:#25D366;">¡Atención rápida y envíos a todo el Perú!</span>
+    </p>
+    <ol>
+      <li>Elige el producto que deseas en nuestra <a href="index.html">lista de productos</a>.</li>
+      <li>Haz clic en el botón <b>Comprar</b> del producto o escríbenos directamente.</li>
+      <li>Coordina el pago y el envío con nuestro equipo.</li>
+    </ol>
+    <p style="text-align:center;">
+      ¿Tienes dudas? <br>
+      <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20JBL%20Go%204" target="_blank" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:20px;vertical-align:middle;margin-right:6px;">
+        Comprar por WhatsApp
+      </a>
+    </p>
+    <form class="form-contacto" id="contactoForm" autocomplete="off">
+      <h3 style="text-align:center;">Consulta rápida</h3>
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" required>
+      <label for="email">Tu correo electrónico</label>
+      <input type="email" id="email" required>
+      <label for="mensaje">Tu mensaje</label>
+      <textarea id="mensaje" rows="3" required></textarea>
+      <button type="submit">Enviar por WhatsApp</button>
+    </form>
+  </section>
+  <footer>
+    <p>&copy; 2025 TecnoTienda - Todos los derechos reservados</p>
+  </footer>
+  <script>
+    document.getElementById('contactoForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(nombre.length < 3) { alert('El nombre debe tener al menos 3 caracteres'); return; }
+      if(!emailRegex.test(email)) { alert('Correo inválido'); return; }
+      if(mensaje.length < 5) { alert('El mensaje debe tener al menos 5 caracteres'); return; }
+      const texto = encodeURIComponent(`Hola, soy ${nombre} (${email}): ${mensaje}`);
+      window.open('https://wa.me/51980063878?text='+texto, '_blank');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

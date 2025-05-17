@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JBL Flip 6 | TecnoTienda</title>
+  <meta name="description" content="Ficha técnica y detalles del parlante JBL Flip 6 en TecnoTienda.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #1e1e2f; color: #fff; padding: 20px; text-align: center; }
+    nav { background: #333; padding: 10px; text-align: center; }
+    nav a { color: #fff; margin: 0 15px; text-decoration: none; transition: color 0.2s;}
+    nav a:hover { color: #FF6600; }
+    .ficha { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    .ficha img { max-width: 100%; border-radius: 8px; margin-bottom: 20px; }
+    .precio { font-size: 1.5em; color: #FF6600; font-weight: bold; }
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-button:hover { background: #128C7E; transform: scale(1.05);}
+    .copiar-nombre {
+      background: #eee; color: #333; border:none; border-radius:5px; padding:4px 10px; margin-left:8px; cursor:pointer; font-size:0.9em;
+      transition: background 0.2s;
+    }
+    .copiar-nombre:hover { background: #FFEBCC; }
+    .volver { display: inline-block; margin-top: 20px; color: #333; text-decoration: underline; }
+    footer { background: #1e1e2f; color: #fff; text-align: center; padding: 10px; margin-top: 40px;}
+    @media (max-width: 700px) {
+      .ficha { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TecnoTienda</h1>
+    <p>Ficha de producto</p>
+  </header>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#productos">Productos</a>
+    <a href="compra.html">Compra</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <section class="ficha">
+    <h2 id="nombre-producto">JBL Flip 6
+      <button class="copiar-nombre" onclick="copiarNombre()">Copiar nombre</button>
+    </h2>
+    <img src="https://www.jbl.com.pe/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0e5e7b6e/1.JBL_FLIP_6_Product%20Image_Hero_Black.png" alt="JBL Flip 6">
+    <p class="precio">S/ 399.90</p>
+    <p><strong>Colores:</strong> Negro, Azul</p>
+    <p>
+      <strong>Descripción:</strong> Parlante portátil resistente al agua y polvo, con sonido potente y bajos profundos.
+    </p>
+    <h3>Características principales</h3>
+    <ul>
+      <li>Batería de hasta 12 horas de reproducción</li>
+      <li>Resistente al agua y polvo (IP67)</li>
+      <li>Bluetooth 5.1</li>
+      <li>Sonido JBL Pro</li>
+      <li>PartyBoost para emparejar varios parlantes</li>
+      <li>Peso: 550 g</li>
+    </ul>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Flip%206" target="_blank" rel="noopener noreferrer">Comprar</a>
+    <br>
+    <a class="volver" href="index.html#jbl-flip6">&larr; Volver a la tienda</a>
+  </section>
+  <footer>
+    <p>&copy; 2025 TecnoTienda - Todos los derechos reservados</p>
+  </footer>
+  <script>
+    function copiarNombre() {
+      const nombre = document.getElementById('nombre-producto').childNodes[0].nodeValue.trim();
+      navigator.clipboard.writeText(nombre);
+      alert('Nombre copiado: ' + nombre);
+    }
+  </script>
+</body>
+</html>

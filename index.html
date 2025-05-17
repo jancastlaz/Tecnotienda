@@ -7,65 +7,141 @@
   <meta name="description" content="TecnoTienda: Lo último en tecnología, parlantes JBL, Sony, audífonos y más. Compra fácil por WhatsApp.">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
-      background-color: #f4f4f4;
+      background: linear-gradient(135deg, #f4f4f4 60%, #ffe0b2 100%);
+      min-height: 100vh;
     }
     header {
-      background-color: #1e1e2f;
+      background: linear-gradient(90deg, #1e1e2f 60%, #FF6600 100%);
       color: white;
-      padding: 20px;
+      padding: 32px 20px 24px 20px;
       text-align: center;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+      letter-spacing: 2px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    header p {
+      font-size: 1.2em;
+      margin: 0;
+      color: #ffe0b2;
+      font-weight: 500;
     }
     nav {
-      background-color: #333;
-      padding: 10px;
+      background: #333;
+      padding: 12px 0;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     nav a {
-      color: white;
-      margin: 0 15px;
+      color: #fff;
+      margin: 0 18px;
       text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 500;
+      transition: color 0.2s, border-bottom 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+    }
+    nav a:hover {
+      color: #FF6600;
+      border-bottom: 2px solid #FF6600;
+    }
+    h2 {
+      color: #FF6600;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      padding: 30px 20px 20px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
     .product-card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, #fff 80%, #ffe0b2 100%);
+      border-radius: 14px;
+      padding: 20px 15px 18px 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
       text-align: center;
+      transition: transform 0.22s, box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 8px 32px rgba(255,102,0,0.13);
+      border: 1.5px solid #FF6600;
     }
     .product-card img {
       max-width: 100%;
-      height: 150px;
+      height: 140px;
       object-fit: contain;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 2px 8px #ff660033);
+      transition: filter 0.2s;
+    }
+    .product-card:hover img {
+      filter: drop-shadow(0 4px 16px #ff660066);
+    }
+    .product-card h3, .product-card h4 {
+      margin: 0 0 10px 0;
+      font-size: 1.15em;
+      color: #1e1e2f;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .whatsapp-button {
       display: inline-block;
-      background-color: #25D366;
+      background: linear-gradient(90deg, #25D366 80%, #128C7E 100%);
       color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
+      padding: 10px 18px;
+      border-radius: 6px;
       text-decoration: none;
-      margin-top: 10px;
+      margin-top: 12px;
       font-weight: bold;
+      font-size: 1.08em;
+      box-shadow: 0 2px 8px rgba(37,211,102,0.08);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
     }
-    footer {
-      background-color: #1e1e2f;
-      color: white;
-      text-align: center;
-      padding: 10px;
+    .whatsapp-button:hover {
+      background: linear-gradient(90deg, #128C7E 80%, #25D366 100%);
+      transform: scale(1.07);
+      box-shadow: 0 4px 16px rgba(37,211,102,0.18);
+    }
+    .product-card .precio {
+      color: #FF6600;
+      font-size: 1.25em;
+      font-weight: bold;
+      margin: 8px 0 0 0;
+    }
+    .product-card .stock {
+      color: #1e1e2f;
+      font-weight: bold;
+      margin: 6px 0 0 0;
+    }
+    .product-card .agotado {
+      background: #ccc;
+      color: #fff;
+      cursor: not-allowed;
+      pointer-events: none;
     }
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #25D366;
+      background: linear-gradient(90deg, #25D366 80%, #128C7E 100%);
       color: white;
       border-radius: 50%;
       width: 60px;
@@ -76,30 +152,113 @@
       z-index: 100;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-float:hover {
+      background: #128C7E;
+      transform: scale(1.08);
     }
     form {
       max-width: 500px;
-      margin: auto;
+      margin: 30px auto;
       background: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 24px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(255,102,0,0.07);
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-align: left;
+      color: #1e1e2f;
     }
     form input, form textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 1em;
+      background: #fffbe7;
+      transition: border 0.2s;
+    }
+    form input:focus, form textarea:focus {
+      border: 1.5px solid #FF6600;
+      outline: none;
+      background: #fffde7;
     }
     form button {
-      background-color: #25D366;
+      background: linear-gradient(90deg, #25D366 80%, #128C7E 100%);
       color: white;
       padding: 10px 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    form button:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+    footer {
+      background: linear-gradient(90deg, #1e1e2f 60%, #FF6600 100%);
+      color: white;
+      text-align: center;
+      padding: 16px 10px 12px 10px;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      margin-top: 40px;
+    }
+    /* Botón de scroll */
+    #scrollTopBtn {
+      background: linear-gradient(90deg, #FF6600 80%, #1e1e2f 100%);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(255,102,0,0.13);
+      transition: background 0.2s, transform 0.2s;
+    }
+    #scrollTopBtn:hover {
+      background: #1e1e2f;
+      transform: scale(1.08);
+    }
+    /* Panel admin y carrito */
+    #admin-panel, #cart-modal {
+      box-shadow: 0 4px 24px rgba(255,102,0,0.13);
+    }
+    #admin-access, #cart-btn {
+      background: linear-gradient(90deg, #FF6600 80%, #1e1e2f 100%);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(255,102,0,0.13);
+      transition: background 0.2s, transform 0.2s;
+    }
+    #admin-access:hover, #cart-btn:hover {
+      background: #1e1e2f;
+      transform: scale(1.08);
+    }
+    @media (max-width: 700px) {
+      .products {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+      .product-card img {
+        height: 100px;
+      }
+      header h1 { font-size: 1.5em; }
+      h2 { font-size: 1.1em; }
     }
   </style>
 </head>
@@ -112,137 +271,419 @@
 
 <nav>
   <a href="#">Inicio</a>
-  <a href="#">Productos</a>
-  <a href="#">Ofertas</a>
+  <a href="compra.html">Compra</a>
   <a href="#contacto">Contacto</a>
 </nav>
 
-<h2 style="text-align:center; margin-top:30px;">Nuestros Productos</h2>
-<section class="products">
+<!-- Banner promocional llamativo -->
+<div style="background:linear-gradient(90deg,#FF6600 80%,#1e1e2f 100%);color:#fff;text-align:center;padding:14px 0;font-size:1.15em;font-weight:bold;letter-spacing:1px;box-shadow:0 2px 8px rgba(255,102,0,0.10);margin-bottom:0;">
+  🚚 ¡ENVÍOS GRATIS en compras mayores a <b>S/ 500</b>! &nbsp; | &nbsp; <span style="color:#ffe082;">Atención personalizada por WhatsApp</span> &nbsp; | &nbsp; <a href="#contacto" style="color:#fff;text-decoration:underline;font-weight:normal;">¡Contáctanos aquí!</a>
+</div>
 
-  <div class="product-card">
-    <!-- Laptop Gamer -->
-    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" alt="Laptop gamer de alto rendimiento">
-    <h3>Laptop Gamer</h3>
-    <p>S/ 3,200.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Laptop%20Gamer" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
-  </div>
+<div style="background:#FF6600;color:#fff;text-align:center;padding:10px 0;font-size:1.1em;font-weight:bold;letter-spacing:1px;">
+  ¡Envíos gratis por compras mayores a S/ 500! | Atención personalizada por WhatsApp
+</div>
 
-  <div class="product-card">
-    <!-- Smartphone Pro -->
-    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80" alt="Smartphone Pro de última generación">
-    <h3>Smartphone Pro</h3>
-    <p>S/ 2,499.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Smartphone%20Pro" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
-  </div>
-
-  <div class="product-card">
-    <!-- Auriculares Bluetooth -->
-    <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80" alt="Auriculares Bluetooth de alta fidelidad">
-    <h3>Auriculares Bluetooth</h3>
-    <p>S/ 150.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Auriculares%20Bluetooth" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
-  </div>
-
-  <div class="product-card">
-    <!-- Parlante Bluetooth JBL (genérico) -->
-    <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=400&q=80" alt="Parlante Bluetooth portátil">
-    <h3>Parlante Bluetooth JBL</h3>
-    <p>S/ 250.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20Parlante%20Bluetooth%20JBL" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
-  </div>
-
-  <div class="product-card">
-    <!-- Parlante Bluetooth Sony (genérico) -->
-    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Parlante Bluetooth Sony">
-    <h3>Parlante Bluetooth Sony</h3>
-    <p>S/ 270.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20Parlante%20Bluetooth%20Sony" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
-  </div>
-
-  <div class="product-card">
+<main>
+  <!-- Productos ahora se muestran directamente en el inicio, sin sección ni título extra -->
+  <!-- AUDIO Y ACCESORIOS -->
+  <h2 style="grid-column: 1/-1; text-align:center; color:#1e1e2f; margin-top:32px;">
+  🔊 ¡Descubre nuestros mejores productos de audio y tecnología!
+</h2>
+  <!-- Bloque HTML de productos con stock dinámico y botones listos para el script -->
+  <div class="products">
     <!-- Audífonos Cableados -->
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Audífonos Cableados">
-    <h3>Audífonos Cableados</h3>
-    <p>S/ 60.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Aud%C3%ADfonos%20Cableados" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
-  </div>
-
-  <div class="product-card">
+    <div class="product-card">
+      <img src="https://www.sony.com.pe/image/7e6e5e7b6e/sony-mdr-zx110-black.png" alt="Sony MDR-ZX110">
+      <h3>Audífonos Cableados</h3>
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-cableados">10</span></p>
+      <a class="whatsapp-button" id="btn-cableados" href="#">Comprar</a>
+    </div>
     <!-- Audífonos Inalámbricos -->
-    <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Audífonos Inalámbricos">
-    <h3>Audífonos Inalámbricos</h3>
-    <p>S/ 180.00</p>
-    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Aud%C3%ADfonos%20Inal%C3%A1mbricos" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
+    <div class="product-card">
+      <img src="https://www.sony.com.pe/image/7e6e5e7b6e/sony-wh-ch510-black.png" alt="Sony WH-CH510">
+      <h3>Audífonos Inalámbricos</h3>
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-inalambricos">7</span></p>
+      <a class="whatsapp-button" id="btn-inalambricos" href="#">Comprar</a>
+    </div>
+
+    <!-- PARLANTES BLUETOOTH -->
+    <h2 style="grid-column: 1/-1; text-align:center; color:#1e2f;">
+      📻 Parlantes Bluetooth
+    </h2>
+
+    <!-- JBL Go 4 -->
+    <div class="product-card">
+      <h4>
+        <a href="ficha-go4.html" style="color:inherit; text-decoration:none;" id="jbl-go4">
+          JBL Go 4
+        </a>
+      </h4>
+      <img src="https://www.jbl.com.pe/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw5e7b7b6e/1.JBL_GO_4_Product%20Image_Hero_Black.png" alt="JBL Go 4">
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-go4">10</span></p>
+      <a class="whatsapp-button" id="btn-go4" href="#">Comprar</a>
+    </div>
+
+    <!-- JBL Clip 5 -->
+    <div class="product-card">
+      <h4>
+        <a href="ficha-clip5.html" style="color:inherit; text-decoration:none;" id="jbl-clip5">
+          JBL Clip 5
+        </a>
+      </h4>
+      <img src="https://www.jbl.com.pe/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw2e5e7b6e/1.JBL_CLIP_5_Product%20Image_Hero_Black.png" alt="JBL Clip 5">
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-clip5">8</span></p>
+      <a class="whatsapp-button" id="btn-clip5" href="#">Comprar</a>
+    </div>
+
+    <!-- JBL Flip 6 -->
+    <div class="product-card">
+      <h4>
+        <a href="ficha-flip6.html" style="color:inherit; text-decoration:none;" id="jbl-flip6">
+          JBL Flip 6
+        </a>
+      </h4>
+      <img src="https://www.jbl.com.pe/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0e5e7b6e/1.JBL_FLIP_6_Product%20Image_Hero_Black.png" alt="JBL Flip 6">
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-flip6">5</span></p>
+      <a class="whatsapp-button" id="btn-flip6" href="#">Comprar</a>
+    </div>
+
+    <!-- JBL Charge 5 -->
+    <div class="product-card">
+      <h4>
+        <a href="ficha-charge5.html" style="color:inherit; text-decoration:none;" id="jbl-charge5">
+          JBL Charge 5
+        </a>
+      </h4>
+      <img src="https://www.jbl.com.pe/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1e5e7b6e/1.JBL_CHARGE_5_Product%20Image_Hero_Black.png" alt="JBL Charge 5">
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-charge5">3</span></p>
+      <a class="whatsapp-button" id="btn-charge5" href="#">Comprar</a>
+    </div>
+
+    <!-- JBL Xtreme 4 -->
+    <div class="product-card">
+      <h4>
+        <a href="ficha-xtreme4.html" style="color:inherit; text-decoration:none;" id="jbl-xtreme4">
+          JBL Xtreme 4
+        </a>
+      </h4>
+      <img src="https://www.jbl.com.pe/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw3e5e7b6e/1.JBL_XTREME_4_Product%20Image_Hero_Black.png" alt="JBL Xtreme 4">
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-xtreme4">2</span></p>
+      <a class="whatsapp-button" id="btn-xtreme4" href="#">Comprar</a>
+    </div>
+
+    <!-- SONY -->
+    <div class="product-card" id="sony">
+      <h4>
+        <a href="https://www.sony.com.pe/electronics/parlantes-portatiles" target="_blank" style="color:inherit; text-decoration:none;">
+          Parlante Bluetooth Sony
+        </a>
+      </h4>
+      <img src="https://www.sony.com.pe/image/7e6e5e7b6e/sony-srs-xb23-black.png" alt="Sony SRS-XB23">
+      <p style="font-weight:bold; color:#1e1e2f;">Stock disponible: <span id="stock-sony">4</span></p>
+      <a class="whatsapp-button" id="btn-sony" href="#">Comprar</a>
+    </div>
   </div>
 
-</section>
+  <!-- Sección Compra -->
+  <section id="compra" style="padding: 30px;">
+    <h2 style="text-align: center;">Compra fácil y rápido</h2>
+    <p style="text-align: center;">
+      Elige tu producto y escríbenos por WhatsApp o llena el formulario para coordinar tu compra.<br>
+      ¡Envíos a todo el país!
+    </p>
+  </section>
 
-<!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/51980063878?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20productos" 
-   class="whatsapp-float" 
-   target="_blank"
-   rel="noopener noreferrer"
-   title="Escríbenos por WhatsApp">
-  💬
-</a>
+  <!-- Formulario que envía a WhatsApp -->
+  <section id="contacto" style="padding: 30px;">
+    <h2 style="text-align: center;">Contáctanos por WhatsApp</h2>
+    <form id="whatsappForm" autocomplete="off">
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" placeholder="Tu nombre" required />
 
-<!-- Formulario que envía a WhatsApp -->
-<section id="contacto" style="padding: 30px;">
-  <h2 style="text-align: center;">Contáctanos por WhatsApp</h2>
-  <form id="whatsappForm" autocomplete="off">
-    <label for="nombre">Tu nombre</label>
-    <input type="text" id="nombre" placeholder="Tu nombre" required />
+      <label for="email">Tu correo electrónico</label>
+      <input type="email" id="email" placeholder="Tu correo electrónico" required />
 
-    <label for="email">Tu correo electrónico</label>
-    <input type="email" id="email" placeholder="Tu correo electrónico" required />
+      <label for="mensaje">Tu mensaje</label>
+      <textarea id="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
 
-    <label for="mensaje">Tu mensaje</label>
-    <textarea id="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
+      <button type="submit">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:22px; height:22px; vertical-align:middle; margin-right:8px;">
+        Enviar por WhatsApp
+      </button>
+    </form>
+  </section>
 
-    <button type="submit">Enviar por WhatsApp</button>
-  </form>
-</section>
+  <!-- Panel de administración (solo visible para ti) -->
+  <section id="admin-panel" style="max-width:500px; margin:40px auto 20px auto; background:#fffbe7; border:1px solid #ffe082; border-radius:10px; padding:20px; display:none;">
+    <h2 style="text-align:center; color:#b8860b;">Panel de Inventario</h2>
+    <form id="addProductForm" autocomplete="off" style="margin-bottom:20px;">
+      <label for="admin-nombre">Nombre del producto</label>
+      <input type="text" id="admin-nombre" required>
 
-<footer>
-  <p>&copy; 2025 TecnoTienda - Todos los derechos reservados</p>
-</footer>
+      <label for="admin-img">URL de imagen</label>
+      <input type="url" id="admin-img" required>
 
-<!-- Script para enviar datos del formulario a WhatsApp -->
+      <label for="admin-link">Enlace de ficha (opcional)</label>
+      <input type="url" id="admin-link">
+
+      <label for="admin-precio">Precio (S/)</label>
+      <input type="number" id="admin-precio" min="0" step="0.01" required>
+
+      <label for="admin-stock">Stock inicial</label>
+      <input type="number" id="admin-stock" min="0" value="1" required>
+
+      <button type="submit" style="background:#25D366;color:white;font-weight:bold;">Agregar producto</button>
+    </form>
+    <div id="admin-productos" style="margin-bottom:20px;">
+      <h3 style="color:#b8860b;">Productos actuales</h3>
+      <ul id="admin-lista" style="list-style:none;padding:0;"></ul>
+    </div>
+    <button onclick="cerrarAdmin()" style="background:#b8860b; color:white; border:none; border-radius:5px; padding:8px 16px; cursor:pointer;">Cerrar panel</button>
+  </section>
+
+  <button id="admin-access" style="position:fixed;bottom:20px;left:20px;z-index:200;background:#b8860b;color:white;border:none;border-radius:50%;width:50px;height:50px;font-size:24px;cursor:pointer;">&#9881;</button>
+
+  <script>
+    // Diccionario de productos y su stock inicial
+const productos = {
+  cableados: { stock: 10, span: 'stock-cableados', btn: 'btn-cableados', mensaje: 'Hola, quiero comprar Audífonos Cableados', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20Aud%C3%ADfonos%20Cableados' },
+  inalambricos: { stock: 7, span: 'stock-inalambricos', btn: 'btn-inalambricos', mensaje: 'Hola, quiero comprar Audífonos Inalámbricos', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20Aud%C3%ADfonos%20Inal%C3%A1mbricos' },
+  go4: { stock: 10, span: 'stock-go4', btn: 'btn-go4', mensaje: 'Hola, quiero comprar el JBL Go 4', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Go%204' },
+  clip5: { stock: 8, span: 'stock-clip5', btn: 'btn-clip5', mensaje: 'Hola, quiero comprar el JBL Clip 5', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Clip%205' },
+  flip6: { stock: 5, span: 'stock-flip6', btn: 'btn-flip6', mensaje: 'Hola, quiero comprar el JBL Flip 6', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Flip%206' },
+  charge5: { stock: 3, span: 'stock-charge5', btn: 'btn-charge5', mensaje: 'Hola, quiero comprar el JBL Charge 5', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Charge%205' },
+  xtreme4: { stock: 2, span: 'stock-xtreme4', btn: 'btn-xtreme4', mensaje: 'Hola, quiero comprar el JBL Xtreme 4', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Xtreme%204' },
+  sony: { stock: 4, span: 'stock-sony', btn: 'btn-sony', mensaje: 'Hola, quiero comprar el Parlante Bluetooth Sony', link: 'https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20Parlante%20Bluetooth%20Sony' }
+};
+
+// Inicializa el stock y eventos
+Object.keys(productos).forEach(key => {
+  const prod = productos[key];
+  const span = document.getElementById(prod.span);
+  const btn = document.getElementById(prod.btn);
+  if (span) span.textContent = prod.stock;
+  if (btn) {
+    btn.onclick = function(e) {
+      e.preventDefault();
+      if (prod.stock > 0) {
+        prod.stock--;
+        if (span) span.textContent = prod.stock;
+        if (prod.stock === 0) {
+          btn.textContent = 'Agotado';
+          btn.classList.add('agotado');
+          btn.disabled = true;
+        }
+        window.open(prod.link, '_blank');
+      } else {
+        alert('¡Producto agotado!');
+      }
+    };
+  }
+});
+    // --------- PANEL ADMIN SEGURO ---------
+    // let intentos = 0; // Eliminado porque ya está declarado arriba
+    document.getElementById('admin-access').onclick = function() {
+      if(intentos >= 5) {
+        alert('Demasiados intentos fallidos. Intenta más tarde.');
+        return;
+      }
+      let clave = prompt('Acceso solo para administrador.\nIngresa la contraseña:');
+      if(clave === 'miclave123'){ // Cambia 'miclave123' por tu clave segura
+        document.getElementById('admin-panel').style.display = 'block';
+        intentos = 0;
+      } else if(clave !== null) {
+        intentos++;
+        alert('Contraseña incorrecta');
+      }
+    };
+    function cerrarAdmin() {
+      document.getElementById('admin-panel').style.display = 'none';
+    }
+  </script>
+
+  <!-- Botón y modal del carrito -->
+  <button id="cart-btn" style="position:fixed;top:20px;right:20px;z-index:200;background:#25D366;color:white;border:none;border-radius:50%;width:50px;height:50px;font-size:24px;cursor:pointer;">
+    🛒
+  </button>
+  <div id="cart-modal" style="display:none;position:fixed;top:70px;right:20px;z-index:300;background:#fff;border:1px solid #ccc;border-radius:10px;padding:20px;min-width:250px;box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <h3>Carrito</h3>
+    <ul id="cart-list" style="list-style:none;padding:0;"></ul>
+    <button onclick="cerrarCarrito()" style="margin-top:10px;background:#b8860b;color:white;border:none;border-radius:5px;padding:8px 16px;cursor:pointer;">Cerrar</button>
+  </div>
+  <button id="scrollTopBtn" style="display:none;position:fixed;bottom:90px;right:20px;z-index:100;background:#25D366;color:white;border:none;border-radius:50%;width:50px;height:50px;font-size:24px;cursor:pointer;">↑</button>
+  <footer>
+    <p>&copy; 2025 TecnoTienda - Todos los derechos reservados</p>
+  </footer>
+</main>
+
 <script>
+  // --------- SCROLL HACIA ARRIBA ---------
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.onscroll = function() {
+    scrollBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+  };
+  scrollBtn.onclick = function() {
+    window.scrollTo({top:0, behavior:'smooth'});
+  };
+
+  // --------- FORMULARIO WHATSAPP ---------
   document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const nombre = document.getElementById('nombre').value.trim();
     const email = document.getElementById('email').value.trim();
     const mensaje = document.getElementById('mensaje').value.trim();
-
-    // Validación básica de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(nombre === '' || email === '' || mensaje === '') {
-      alert('Por favor, completa todos los campos');
+    if(nombre.length < 3) {
+      alert('El nombre debe tener al menos 3 caracteres');
       return;
     }
-
     if (!emailRegex.test(email)) {
       alert('Por favor, ingresa un correo electrónico válido');
+      return;
+    }
+    if(mensaje.length < 10) {
+      alert('El mensaje debe tener al menos 10 caracteres');
       return;
     }
 
     const telefono = '51980063878';
     const texto = encodeURIComponent(
-      `Hola, mi nombre es ${nombre}.%0ACorreo: ${email}.%0AMensaje: ${mensaje}`
+      `Hola, mi nombre es ${nombre}.\nCorreo: ${email}.\nMensaje: ${mensaje}`
     );
-
     const url = `https://wa.me/${telefono}?text=${texto}`;
     const win = window.open(url, '_blank');
-    if (win) {
-      win.focus();
-    }
-
+    if (win) win.focus();
     document.getElementById('whatsappForm').reset();
   });
+
+  // --------- BUSCADOR DE PRODUCTOS ---------
+  // Agrega un input con id="buscador" arriba de .products en tu HTML
+  if (!document.getElementById('buscador')) {
+    const buscador = document.createElement('input');
+    buscador.type = 'text';
+    buscador.id = 'buscador';
+    buscador.placeholder = 'Buscar producto...';
+    buscador.style = 'display:block;margin:20px auto 0 auto;max-width:300px;padding:8px;border-radius:5px;border:1px solid #ccc;';
+    document.querySelector('.products').parentNode.insertBefore(buscador, document.querySelector('.products'));
+    buscador.addEventListener('input', function() {
+      const texto = this.value.toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const nombre = card.textContent.toLowerCase();
+        card.style.display = nombre.includes(texto) ? '' : 'none';
+      });
+    });
+  }
+
+  // --------- STOCK JBL XTREME 4 ---------
+  let stockXtreme4 = 3;
+  const stockXtreme4Span = document.getElementById('stock-xtreme4');
+  if(stockXtreme4Span) stockXtreme4Span.textContent = stockXtreme4;
+
+  function restarStockXtreme4(event) {
+    event.preventDefault();
+    if (stockXtreme4 > 0) {
+      stockXtreme4--;
+      stockXtreme4Span.textContent = stockXtreme4;
+      if(stockXtreme4 === 1){
+        alert('¡Atención! Solo queda 1 unidad de este producto.');
+      }
+      window.open('https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20JBL%20Xtreme%204', '_blank');
+    } else {
+      alert('¡Producto agotado!');
+    }
+  }
+
+  // --------- PANEL ADMIN SEGURO ---------
+  let intentos = 0;
+  document.getElementById('admin-access').onclick = function() {
+    if(intentos >= 5) {
+      alert('Demasiados intentos fallidos. Intenta más tarde.');
+      return;
+    }
+    let clave = prompt('Acceso solo para administrador.\nIngresa la contraseña:');
+    if(clave === 'miclave123'){ // Cambia 'miclave123' por tu clave segura
+      document.getElementById('admin-panel').style.display = 'block';
+      intentos = 0;
+    } else if(clave !== null) {
+      intentos++;
+      alert('Contraseña incorrecta');
+    }
+  };
+  function cerrarAdmin() {
+    document.getElementById('admin-panel').style.display = 'none';
+  }
+
+  // --------- AGREGAR PRODUCTOS DINÁMICAMENTE ---------
+  let productosAdmin = [];
+
+  // Mostrar productos actuales en el panel admin
+  function actualizarListaAdmin() {
+    const lista = document.getElementById('admin-lista');
+    lista.innerHTML = '';
+    productosAdmin.forEach((prod, idx) => {
+      const li = document.createElement('li');
+      li.style.marginBottom = '10px';
+      li.innerHTML = `
+        <b>${prod.nombre}</b> - S/ ${prod.precio} - Stock: <span class="stock-admin">${prod.stock}</span>
+        <button onclick="editarProductoAdmin(${idx})" style="margin-left:8px;background:#ffc107;color:#333;border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">Editar</button>
+        <button onclick="eliminarProductoAdmin(${idx})" style="margin-left:4px;background:#e53935;color:white;border:none;border-radius:4px;padding:2px 8px;cursor:pointer;">Eliminar</button>
+      `;
+      lista.appendChild(li);
+    });
+  }
+
+  // Agregar producto desde el panel admin
+  document.getElementById('addProductForm').onsubmit = function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('admin-nombre').value.trim();
+    const img = document.getElementById('admin-img').value.trim();
+    const link = document.getElementById('admin-link').value.trim();
+    const precio = parseFloat(document.getElementById('admin-precio').value.trim()).toFixed(2);
+    const stock = parseInt(document.getElementById('admin-stock').value, 10);
+
+    if(!nombre || !img || isNaN(stock) || !precio) return;
+
+    productosAdmin.push({nombre, img, link, precio, stock});
+    actualizarListaAdmin();
+    document.getElementById('addProductForm').reset();
+  };
+
+  // Editar producto
+  window.editarProductoAdmin = function(idx) {
+    const prod = productosAdmin[idx];
+    const nuevoNombre = prompt('Editar nombre:', prod.nombre) || prod.nombre;
+    const nuevoPrecio = prompt('Editar precio:', prod.precio) || prod.precio;
+    const nuevoStock = prompt('Editar stock:', prod.stock) || prod.stock;
+    productosAdmin[idx] = {...prod, nombre: nuevoNombre, precio: nuevoPrecio, stock: nuevoStock};
+    actualizarListaAdmin();
+  };
+
+  // Eliminar producto
+  window.eliminarProductoAdmin = function(idx) {
+    if(confirm('¿Seguro que deseas eliminar este producto?')) {
+      productosAdmin.splice(idx, 1);
+      actualizarListaAdmin();
+    }
+  };
+
+  // Mostrar productos al abrir el panel admin
+  document.getElementById('admin-access').onclick = function() {
+    if(intentos >= 5) {
+      alert('Demasiados intentos fallidos. Intenta más tarde.');
+      return;
+    }
+    let clave = prompt('Acceso solo para administrador.\nIngresa la contraseña:');
+    if(clave === 'miclave123'){ // Cambia 'miclave123' por tu clave segura
+      document.getElementById('admin-panel').style.display = 'block';
+      actualizarListaAdmin();
+      intentos = 0;
+    } else if(clave !== null) {
+      intentos++;
+      alert('Contraseña incorrecta');
+    }
+  };
 </script>
 </body>
 </html>

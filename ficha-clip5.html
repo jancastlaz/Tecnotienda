@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JBL Clip 5 | TecnoTienda</title>
+  <meta name="description" content="Ficha técnica y detalles del parlante JBL Clip 5 en TecnoTienda.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #1e1e2f; color: #fff; padding: 20px; text-align: center; }
+    nav { background: #333; padding: 10px; text-align: center; }
+    nav a { color: #fff; margin: 0 15px; text-decoration: none; transition: color 0.2s;}
+    nav a:hover { color: #FF6600; }
+    .ficha { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    .ficha img { max-width: 100%; border-radius: 8px; margin-bottom: 20px; }
+    .precio { font-size: 1.5em; color: #FF6600; font-weight: bold; }
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-button:hover { background: #128C7E; transform: scale(1.05);}
+    .copiar-nombre {
+      background: #eee; color: #333; border:none; border-radius:5px; padding:4px 10px; margin-left:8px; cursor:pointer; font-size:0.9em;
+      transition: background 0.2s;
+    }
+    .copiar-nombre:hover { background: #FFEBCC; }
+    .volver { display: inline-block; margin-top: 20px; color: #333; text-decoration: underline; }
+    footer { background: #1e1e2f; color: #fff; text-align: center; padding: 10px; margin-top: 40px;}
+    @media (max-width: 700px) {
+      .ficha { padding: 10px; }
+    }
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      z-index: 100;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-float:hover { background: #128C7E; transform: scale(1.1);}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TecnoTienda</h1>
+    <p>Ficha de producto</p>
+  </header>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#productos">Productos</a>
+    <a href="compra.html">Compra</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <section class="ficha">
+    <h2 id="nombre-producto">JBL Clip 5
+      <button class="copiar-nombre" onclick="copiarNombre()">Copiar nombre</button>
+    </h2>
+    <img src="https://images.pexels.com/photos/63703/pexels-photo-63703.jpeg?auto=compress&w=400&q=80" alt="JBL Clip 5">
+    <p class="precio">S/ 179.90</p>
+    <p><strong>Colores:</strong> Negro, Rojo</p>
+    <p>
+      <strong>Descripción:</strong> Parlante portátil con clip integrado, resistente y fácil de llevar a cualquier lugar.
+    </p>
+    <h3>Características principales</h3>
+    <ul>
+      <li>Batería de hasta 10 horas de reproducción</li>
+      <li>Resistente al agua y polvo (IP67)</li>
+      <li>Bluetooth 5.3</li>
+      <li>Clip de mosquetón integrado</li>
+      <li>Sonido JBL Pro</li>
+      <li>Peso: 239 g</li>
+    </ul>
+
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Clip%205" target="_blank" rel="noopener noreferrer">Comprar</a>
+    <br>
+    <a class="volver" href="index.html#jbl-clip5">&larr; Volver a la tienda</a>
+    <p id="stock-count" style="display:none;">3</p>
+  </section>
+  <a href="https://wa.me/51980063878?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20productos%20de%20TecnoTienda" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chatea con nosotros por WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px;height:36px;margin-top:12px;">
+  </a>
+  <footer>
+    <p>&copy; 2025 TecnoTienda &mdash; Tu tienda de tecnología de confianza. Síguenos en <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" style="color:#ffe082;text-decoration:underline;">Instagram</a></p>
+  </footer>
+  <script>
+    function copiarNombre() {
+      const nombre = document.getElementById('nombre-producto').childNodes[0].nodeValue.trim();
+      navigator.clipboard.writeText(nombre);
+      alert('Nombre copiado: ' + nombre);
+    }
+    let stock = 3;
+    function comprarProducto(e) {
+      e.preventDefault();
+      if(stock > 0) {
+        stock--;
+        document.getElementById('stock-count').textContent = stock;
+        if(stock === 0) {
+          document.getElementById('btn-wsp').textContent = 'Agotado';
+          document.getElementById('btn-wsp').style.background = '#ccc';
+          document.getElementById('btn-wsp').href = '#';
+          document.getElementById('btn-wsp').onclick = null;
+        }
+        window.open('https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Xtreme%204', '_blank');
+      } else {
+        alert('¡Producto agotado!');
+      }
+    }
+  </script>
+</body>
+</html>

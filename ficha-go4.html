@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JBL Go 4 | TecnoTienda</title>
+  <meta name="description" content="Ficha técnica y detalles del parlante JBL Go 4 en TecnoTienda.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #1e1e2f; color: #fff; padding: 20px; text-align: center; }
+    nav { background: #333; padding: 10px; text-align: center; }
+    nav a { color: #fff; margin: 0 15px; text-decoration: none; transition: color 0.2s;}
+    nav a:hover { color: #FF6600; }
+    .ficha { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    .ficha img { max-width: 100%; border-radius: 8px; margin-bottom: 20px; }
+    .precio { font-size: 1.5em; color: #FF6600; font-weight: bold; }
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-button:hover { background: #128C7E; transform: scale(1.05);}
+    .copiar-nombre {
+      background: #eee; color: #333; border:none; border-radius:5px; padding:4px 10px; margin-left:8px; cursor:pointer; font-size:0.9em;
+      transition: background 0.2s;
+    }
+    .copiar-nombre:hover { background: #FFEBCC; }
+    .volver { display: inline-block; margin-top: 20px; color: #333; text-decoration: underline; }
+    footer { background: #1e1e2f; color: #fff; text-align: center; padding: 10px; margin-top: 40px;}
+    @media (max-width: 700px) {
+      .ficha { padding: 10px; }
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 20px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card h4 {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TecnoTienda</h1>
+    <p>Ficha de producto</p>
+  </header>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#productos">Productos</a>
+    <a href="compra.html">Compra</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <section class="ficha">
+    <h2 id="nombre-producto">JBL Go 4
+      <button class="copiar-nombre" onclick="copiarNombre()">Copiar nombre</button>
+    </h2>
+    <img src="https://images.pexels.com/photos/3394656/pexels-photo-3394656.jpeg?auto=compress&w=400&q=80" alt="JBL Go 4">
+    <p class="precio">S/ 129.90</p>
+    <p><strong>Colores:</strong> Azul y Negro</p>
+    <p>
+      <strong>Descripción:</strong> Parlante ultra compacto y ligero, ideal para llevar a cualquier parte y disfrutar de tu música favorita en todo momento.
+    </p>
+    <h3>Características principales</h3>
+    <ul>
+      <li>Batería de hasta 7 horas de reproducción continua</li>
+      <li>Resistente al agua y polvo (certificación IP67)</li>
+      <li>Bluetooth 5.3 para conexión estable y rápida</li>
+      <li>Sonido JBL Pro con bajos mejorados</li>
+      <li>Diseño portátil y moderno</li>
+      <li>Carga rápida por USB-C</li>
+      <li>Dimensiones: 94 x 75 x 42 mm</li>
+      <li>Peso: 209 g</li>
+    </ul>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Go%204" target="_blank" rel="noopener noreferrer">Comprar</a>
+    <br>
+    <a class="volver" href="index.html#jbl-go4">&larr; Volver a la tienda</a>
+  </section>
+  <div class="product-card">
+    <h4>
+      <a href="ficha-go4.html" style="color:inherit; text-decoration:none;" id="jbl-go4">
+        JBL Go 4
+      </a>
+    </h4>
+    <img src="https://images.pexels.com/photos/3394656/pexels-photo-3394656.jpeg?auto=compress&w=400&q=80" alt="JBL Go 4">
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20quiero%20comprar%20el%20JBL%20Go%204" target="_blank" rel="noopener noreferrer">Comprar</a>
+  </div>
+  <footer>
+    <p>&copy; 2025 TecnoTienda - Todos los derechos reservados</p>
+  </footer>
+  <script>
+    function copiarNombre() {
+      const nombre = document.getElementById('nombre-producto').childNodes[0].nodeValue.trim();
+      navigator.clipboard.writeText(nombre);
+      alert('Nombre copiado: ' + nombre);
+    }
+  </script>
+</body>
+</html>
