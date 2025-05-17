@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -228,3 +229,235 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TecnoTienda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #1e1e2f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: contain;
+    }
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #1e1e2f;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 60px;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      text-decoration: none;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TecnoTienda</h1>
+  <p>¡Lo último en tecnología a tu alcance!</p>
+</header>
+
+<nav>
+  <a href="#">Inicio</a>
+  <a href="#">Productos</a>
+  <a href="#">Ofertas</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<section class="products">
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150" alt="Laptop">
+    <h3>Laptop Gamer</h3>
+    <p>S/ 3,200.00</p>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Laptop%20Gamer" target="_blank">Comprar por WhatsApp</a>
+  </div>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150" alt="Celular">
+    <h3>Smartphone Pro</h3>
+    <p>S/ 2,499.00</p>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Smartphone%20Pro" target="_blank">Comprar por WhatsApp</a>
+  </div>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150" alt="Auriculares">
+    <h3>Auriculares Bluetooth</h3>
+    <p>S/ 150.00</p>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Auriculares%20Bluetooth" target="_blank">Comprar por WhatsApp</a>
+  </div>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150" alt="Parlantes">
+    <h3>Parlantes Bluetooth</h3>
+    <p>S/ 220.00</p>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Parlantes%20Bluetooth" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
+  </div>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150" alt="Audífonos Cableados">
+    <h3>Audífonos Cableados</h3>
+    <p>S/ 60.00</p>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Aud%C3%ADfonos%20Cableados" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
+  </div>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/200x150" alt="Audífonos Inalámbricos">
+    <h3>Audífonos Inalámbricos</h3>
+    <p>S/ 180.00</p>
+    <a class="whatsapp-button" href="https://wa.me/51980063878?text=Hola%2C%20estoy%20interesado%20en%20el%20producto%3A%20Aud%C3%ADfonos%20Inal%C3%A1mbricos" target="_blank" rel="noopener noreferrer">Comprar por WhatsApp</a>
+  </div>
+</section>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/51980063878?text=Hola%2C%20quiero%20más%20información%20sobre%20los%20productos" 
+   class="whatsapp-float" 
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Escríbenos por WhatsApp">
+  💬
+</a>
+
+<!-- Formulario que envía a WhatsApp -->
+<section id="contacto" style="padding: 30px;">
+  <h2 style="text-align: center;">Contáctanos por WhatsApp</h2>
+  <form id="whatsappForm" autocomplete="off">
+    <label for="nombre">Tu nombre</label>
+    <input type="text" id="nombre" placeholder="Tu nombre" required />
+
+    <label for="email">Tu correo electrónico</label>
+    <input type="email" id="email" placeholder="Tu correo electrónico" required />
+
+    <label for="mensaje">Tu mensaje</label>
+    <textarea id="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
+
+    <button type="submit">Enviar por WhatsApp</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 TecnoTienda - Todos los derechos reservados</p>
+</footer>
+
+<!-- Script para enviar datos del formulario a WhatsApp -->
+<script>
+  document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    // Validación básica de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(nombre === '' || email === '' || mensaje === '') {
+      alert('Por favor, completa todos los campos');
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      alert('Por favor, ingresa un correo electrónico válido');
+      return;
+    }
+
+    const telefono = '51980063878';
+    const texto = encodeURIComponent(
+      `Hola, mi nombre es ${nombre}.%0ACorreo: ${email}.%0AMensaje: ${mensaje}`
+    );
+
+    const url = `https://wa.me/${telefono}?text=${texto}`;
+    const win = window.open(url, '_blank');
+    if (win) {
+      win.focus();
+    }
+  });
+</script>
+
+</body>
+</html>
+>>>>>>> b80a0817e7ca8d19ba662da51907b2172c8426d2
